@@ -10,15 +10,15 @@ You first retrieve all campaign characteristics (names, IDs, etc.) using HubSpot
 So basically, the workflow looks something like this:
 
 0. set working directory
-1. get all campaign IDs, names and subjects from Hubspot using the API key and save the output to a text file: `get_Hubspot_campaign_names_and_IDs(APIkey)`
+1. get all campaign IDs, names and subjects from Hubspot using the API key and save the output to a text file: `get_Hubspot_campaign_names_and_IDs(...)`
 2. manually remove all campaigns (lines) you don't want to see in your final CSV file
-3. clean up GMail: `clean_up_gmail(pwd_gmail)`
-4. get access_token: `get_token(user_hubspot, pwd_hubspot)`
-5. request that basic/advanced campaign stats be sent to the chosen GMail address for all campaigns found in the file: `request_campaign_data_basic(results, access_token)`
-6. connect to the GMail server and collects all attachment links: `get_attachment_links(pwd_gmail, num_files)`
-7. download all collected attachment files: `download_files(attachments)`
-8. extract files from archives: `extract_files(folder)`
-9. read in individual CSV files, concatenate them and output results: `merge_files(folder)`
+3. clean up GMail: `clean_up_gmail(...)`
+4. get access_token: `get_token(...)`
+5. request that basic/advanced campaign stats be sent to the chosen GMail address for all campaigns found in the file: `request_campaign_data_basic(...)`
+6. connect to the GMail server and collects all attachment links: `get_attachment_links(...)`
+7. download all collected attachment files: `download_files(...)`
+8. extract files from archives: `extract_files(...)`
+9. read in individual CSV files, concatenate them and output results: `merge_files(...)`
 
 The only real PITA was figuring out how to get the "token" as seamlessly as possible. After experimenting with this for quite some time I've reduced that portion of the script to the bare minimum: the first HTTP request will provide the website with the username and password, and the second one will verify that you're logged in (and in the process fetch the "token").
 
