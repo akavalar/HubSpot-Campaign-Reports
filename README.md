@@ -21,7 +21,7 @@ You first retrieve all campaign characteristics (names, IDs, etc.) using HubSpot
 
 The only real PITA was figuring out how to get the "token" as seamlessly as possible. After experimenting with this for quite some time I've reduced that portion of the script to the bare minimum: the first HTTP request in the `get_token(...)` function will provide the website with the username and password, and the second one will verify that you're logged in (and in the process fetch the "token").
 
-# Caveats
+## Caveats
 A very important requirement was that the script shouldn't rely on any custom Python modules. It should run on *any* plain-vanilla Python installation that comes with macOS (tested with El Capitan and Sierra, both use Python 2.7). This explains why I didn't choose the OAuth2 route (i.e. use `gmail-oauth2-tools` module) and why I stuck to `urllib2` instead of the more modern `requests` for talking to the HubSpot server. Same goes for `pandas` vs. my homemade `merge_files()` function. The lack of OAuth2 means you will need to [first enable access for less secure apps](https://www.google.com/settings/security/lesssecureapps). I guess that's one more reason for having a separate Gmail account just for this...
 
 Last time I checked (sometime in Q4 2016?) the scripts worked just fine, but again, due to their hacky nature they could be broken at any time. YMMV!
